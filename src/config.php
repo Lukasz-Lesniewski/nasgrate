@@ -3,9 +3,6 @@ define('IS_PHAR', strpos(dirname(__FILE__), 'phar://') === 0);
 define('DIR_SRC', IS_PHAR ? dirname(Phar::running(false)) : substr( dirname(__FILE__), 0, strlen(dirname(__FILE__)) - 4));
 define('DIR_ROOT',  substr( dirname(__FILE__), 0, strlen(dirname(__FILE__)) - 4) );
 
-
-define('ENVIRONMENT_FILE', DIR_SRC . '/.environment');
-
 if (!file_exists(ENVIRONMENT_FILE)) die('File "' . ENVIRONMENT_FILE . '" not exist');
 
 $params = parse_ini_file(ENVIRONMENT_FILE);
