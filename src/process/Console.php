@@ -94,6 +94,8 @@ class Console extends Base
                         foreach (array('up', 'down') as $st) {
                             $content = str_replace('-- ' . strtoupper($st) . ' --', '-- ' . strtoupper($st) . ' --' . "\n\n" . $refil($commandContent, $st), $content);
                         }
+                    } else {
+                      exit('No migration file generated.');
                     }
                 }
             }
