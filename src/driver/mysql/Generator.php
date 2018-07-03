@@ -294,7 +294,7 @@ class Generator extends AbstractGenerator
             return "PRIMARY KEY (`{$indxData['COLUMN_NAME']}`)";
         } else {
             $cols = explode(self::FIELD_DELIMITER, $indxData['COLUMN_NAME']);
-            return ($indxData['NON_UNIQUE'] == '0' ? 'UNIQUE ' : '') . ($indxData['INDEX_TYPE'] != 'BTREE' ? $indxData['INDEX_TYPE'] . ' ' : '') . "KEY `{$indxData['INDEX_NAME']}` (`" . implode('`, `', $cols) . "`)";
+            return ($indxData['NON_UNIQUE'] == '0' ? 'UNIQUE ' : '') . ($indxData['INDEX_TYPE'] != 'BTREE' ? $indxData['INDEX_TYPE'] . ' ' : '') . "KEY `{$indxData['INDEX_NAME']}` (`" . implode('`, `', array_unique($cols)) . "`)";
         }
     }
 
